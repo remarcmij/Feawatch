@@ -25,19 +25,16 @@
           type="text"
           placeholder="Search movie with title"
         />
-        <select name="" id="dateSelect">
+        <select id="search-by-category">
+          <option value=""></option>
+          <option value="movie">Movie</option>
+          <option value="series">Series</option>
+          <option value="episode">Episode</option>
+        </select>
+        <select id="dateSelect">
           <!-- <option value="1980">1980</option> -->
         </select>
-        <div class="search-by-category">
-          <button id="action">Action</button>
-          <button id="drama">Drama</button>
-          <button id="thriller">Thriller</button>
-          <button id="adventure">Adventure</button>
-          <button id="fantasy">Fantasy</button>
-          <button id="horror">Horror</button>
-          <button id="crime">Crime</button>
-          <button id="supernatural">Supernatural</button>
-        </div>
+        <button id="search-button">Search</button>
       </div>
       <div class="results">
         <div class="movie-card">

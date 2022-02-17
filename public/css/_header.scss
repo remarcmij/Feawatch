@@ -1,0 +1,15 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $black;
+  background-color: $orangeEx;
+  padding: 1.6rem;
+  border-bottom: 6px solid $darkRed;
+  a {
+    color: $black;
+    &:hover {
+      color: $red;
+    }
+  }
+}
