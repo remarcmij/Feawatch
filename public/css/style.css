@@ -63,6 +63,21 @@ header a:hover {
   background-color: #ffcb04;
 }
 
+.container .search-bar #search-button {
+  width: 90px;
+  cursor: pointer;
+  border: none;
+  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.container .search-bar #search-button:hover {
+  background-color: #8b0300;
+  color: #ffcb04;
+}
+
 .container .results {
   display: -webkit-box;
   display: -ms-flexbox;

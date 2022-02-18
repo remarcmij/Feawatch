@@ -3,7 +3,12 @@ const createCard = (movie) => {
   const { Poster, Title, Type, Year, imdbID } = movie;
   const card = createElement('div', 'movie-card', 'movie-card');
   const movieImg = createElement('img', 'movie-img', 'movie-img');
-  movieImg.src = Poster;
+  console.log(Poster);
+  if (Poster === 'N/A') {
+    movieImg.src = './public/img/default-card-img.jpg';
+  } else {
+    movieImg.src = Poster;
+  }
   movieImg.setAttribute('alt', Title);
   const movieInformation = createElement(
     'div',
