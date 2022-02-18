@@ -26,7 +26,7 @@ const createCard = (movie) => {
   movieInformation.appendChild(movieTitle);
   movieInformation.appendChild(movieContent);
   card.addEventListener('click', async () => {
-    const url = `http://www.omdbapi.com/?apikey=859c6fe2&i=${imdbID}&plot=full`;
+    const url = `https://www.omdbapi.com/?apikey=859c6fe2&i=${imdbID}&plot=full`;
     await getCardDetail(url);
   });
   return card;
