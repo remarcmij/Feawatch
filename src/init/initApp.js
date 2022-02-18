@@ -37,19 +37,30 @@ const renderResult = (movieResults) => {
   });
 };
 
-let searchTimeToken = 0;
-window.onload = () => {
+// window.onload = () => {
+
+// Will add here other search filter and change event listener instead of onkeyup to click for search button;
+// const getSearchQuery = () => {
+//   if (searchElement.value.trim().length === 0) {
+//     return;
+//   }
+//   console.log(searchElement.value);
+//   return searchElement.value;
+// };
+//   // searchElement.addEventListener('keyup', getSearchQuery);
+// };
+const searchButton = document.getElementById('search-button');
+
+const getSearchQueries = () => {
   const searchElement = document.getElementById('search-input');
-  // Will add here other search filter and change event listener instead of onkeyup to click for search button;
-  searchElement.onkeyup = (e) => {
-    clearTimeout(searchTimeToken);
-    if (searchElement.value.trim().length === 0) {
-      return;
-    }
-    searchTimeToken = setTimeout(() => {
-      getMovies(searchElement.value);
-    }, 500);
-  };
+  const searchValue = searchElement.value;
+  const searchCategoryElement = document.getElementById('search-by-category');
+  const searchCategoryValue = searchCategoryElement.value;
+  const searchYearElement = document.getElementById('dateSelect');
+  const searchYearValue = searchYearElement.value;
+  console.log(searchValue, searchYearValue, searchCategoryValue);
+  getMovies(searchValue, searchCategoryValue, searchYearValue);
 };
+searchButton.addEventListener('click', getSearchQueries);
 
 getMovies();

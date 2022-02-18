@@ -1,4 +1,6 @@
 import createElement from '../helpers/createElement.js';
+import { fetchData } from '../helpers/fetchData.js';
+import createCardDetail from './createCardDetail.js';
 const createCard = (movie) => {
   const { Poster, Title, Type, Year, imdbID } = movie;
   const card = createElement('div', 'movie-card', 'movie-card');
@@ -23,7 +25,27 @@ const createCard = (movie) => {
   card.appendChild(movieInformation);
   movieInformation.appendChild(movieTitle);
   movieInformation.appendChild(movieContent);
-  card.addEventListener('click', () => console.log(imdbID));
+  card.addEventListener('click', async () => {
+    const url = `http://www.omdbapi.com/?apikey=859c6fe2&i=${imdbID}&plot=full`;
+    await getCardDetail(url);
+  });
   return card;
 };
+
+const getCardDetail = async (url) => {
+  try {
+    const data = await fetchData(url);
+
+    renderResult(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+const renderResult = (data) => {
+  const resultList = document.getElementById('results');
+  resultList.innerHTML = '';
+  const detailCard = createCardDetail(data);
+  resultList.appendChild(detailCard);
+};
+
 export default createCard;
