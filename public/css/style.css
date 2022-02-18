@@ -226,7 +226,8 @@ footer .applications {
 }
 
 #card-detail-container {
-  color: #ffcb04;
+  width: 80%;
+  color: #e5e5e5;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -234,5 +235,17 @@ footer .applications {
 
 #card-detail-container #card-detail-img {
   margin-right: 2rem;
+}
+
+#card-detail-container #card-detail-content-wrapper {
+  padding: 2rem;
+  border: solid 2px #8b0300;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  background-color: rgba(139, 3, 0, 0.3);
+}
+
+#card-detail-container #card-detail-content-wrapper:hover {
+  border: solid 2px #ffcb04;
 }
 /*# sourceMappingURL=style.css.map */
