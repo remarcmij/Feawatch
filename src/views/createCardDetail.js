@@ -47,7 +47,11 @@ const createCardDetail = (data) => {
 
   //Add contents to UIS
 
-  cardDetailImg.src = Poster;
+  if (Poster === 'N/A') {
+    cardDetailImg.src = '../../public/img/default-card-img.jpg';
+  } else {
+    cardDetailImg.src = Poster;
+  }
   cardDetailImg.setAttribute('alt', Title);
   cardDetailTitle.textContent = `Movie Title :${Title}`;
   cardDetailYear.textContent = `Created : ${Year}`;
