@@ -26,10 +26,10 @@
     align-items: center;
     padding: 2rem;
     .movie-card {
+      margin: 0.5rem;
       position: relative;
-      width: 23%;
+      width: 20%;
       color: $lightWhite;
-      max-height: 450px;
       overflow: hidden;
 
       .movie-img {
@@ -45,8 +45,8 @@
         top: 1%;
         left: 1%;
         background-color: $black;
-        width: 60%;
-        height: 97%;
+        width: 100%;
+        height: 100%;
         transition: all 1s;
         color: $orangeEx;
         cursor: pointer;
@@ -54,6 +54,9 @@
       &:hover {
         .movie-information {
           opacity: 0.9;
+        }
+        .movie-img {
+          border: solid 2px $orangeEx;
         }
       }
     }
