@@ -224,4 +224,15 @@ footer .applications {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
+
+#card-detail-container {
+  color: #ffcb04;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#card-detail-container #card-detail-img {
+  margin-right: 2rem;
+}
 /*# sourceMappingURL=style.css.map */
