@@ -3,10 +3,12 @@ import { API_URL } from '../constants.js';
 
 import createUi from './createUi.js';
 import createCard from '../views/createCard.js';
+import createElement from '../helpers/createElement.js';
+import createPagination from '../views/createPagination.js';
 createUi();
-const getMovies = async (title = '', type = '', year = '') => {
+const getMovies = async (title = '', type = '', year = '', page = '1') => {
   try {
-    const url = `${API_URL}&s=${title}&type=${type}&y=${year}`;
+    const url = `${API_URL}&s=${title}&type=${type}&y=${year}&page=${page}`;
     const { Search } = await fetchData(url);
     if (Search === undefined) {
       console.log('Movie can not find');
@@ -16,6 +18,7 @@ const getMovies = async (title = '', type = '', year = '') => {
       resultList.style.color = 'red';
     } else {
       renderResult(Search);
+      createPagination(url);
     }
   } catch (error) {
     console.log(error);

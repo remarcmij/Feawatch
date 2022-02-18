@@ -27,9 +27,3 @@ const createCard = (movie) => {
   return card;
 };
 export default createCard;
-
-Poster: 'https://m.media-amazon.com/images/M/MV5BMTQ0NDQyNDMxMl5BMl5BanBnXkFtZTcwNjM2MDU5NA@@._V1_SX300.jpg';
-Title: 'La casa muda';
-Type: 'movie';
-Year: '2010';
-imdbID: 'tt1646973';
