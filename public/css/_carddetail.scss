@@ -1,7 +1,17 @@
 #card-detail-container {
-  color: $orangeEx;
+  width: 80%;
+  color: $lightWhite;
   display: flex;
   #card-detail-img {
     margin-right: 2rem;
+  }
+  #card-detail-content-wrapper {
+    padding: 2rem;
+    border: solid 2px $darkRed;
+    transition: all 1s;
+    background-color: rgba($darkRed, 0.3);
+    &:hover {
+      border: solid 2px $orangeEx;
+    }
   }
 }
