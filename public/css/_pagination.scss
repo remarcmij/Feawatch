@@ -7,11 +7,11 @@
   #prev-movie {
     margin: 1rem;
     align-items: center;
-    color: $darkRed;
+    color: $orangeEx;
     transition: all 0.5s;
     &:hover {
       text-decoration: underline;
-      color: $lightWhite;
+      color: $red;
       cursor: pointer;
     }
   }

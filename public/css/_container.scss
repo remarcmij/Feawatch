@@ -48,18 +48,12 @@
 }
 /* MOBILE*/
 @media (max-width: 767px) {
-  .movie-card {
-    width: 100% !important;
-  }
   #search-button {
     width: 13% !important;
   }
 }
 /* IPAD*/
 @media (min-width: 768px) and (max-width: 1024px) {
-  .movie-card {
-    width: 47% !important;
-  }
   #search-button {
     width: 11% !important;
   }
