@@ -2,16 +2,17 @@
   width: 80%;
   color: $lightWhite;
   display: flex;
+  border: solid 2px $darkRed;
+  transition: all 1s;
+  background-color: rgba($darkRed, 0.3);
+  &:hover {
+    border: solid 2px $orangeEx;
+  }
   #card-detail-img {
-    margin-right: 2rem;
+    margin: 1rem;
+    height: 30%;
   }
   #card-detail-content-wrapper {
-    padding: 2rem;
-    border: solid 2px $darkRed;
-    transition: all 1s;
-    background-color: rgba($darkRed, 0.3);
-    &:hover {
-      border: solid 2px $orangeEx;
-    }
+    padding: 1rem;
   }
 }
