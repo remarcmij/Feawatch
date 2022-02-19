@@ -1,4 +1,5 @@
 import createElement from '../helpers/createElement.js';
+import getPaginationMovies from '../handlers/getPaginationMovies.js';
 
 const createPagination = (url) => {
   const resultList = document.getElementById('results');
@@ -7,17 +8,32 @@ const createPagination = (url) => {
   next.textContent = 'Next Page >>';
   const prev = createElement('p', 'prev-movie');
   prev.textContent = '<< Prev Page';
-  pagination.appendChild(next);
+
   pagination.appendChild(prev);
+  pagination.appendChild(next);
   resultList.appendChild(pagination);
+
   let pageNumber;
+
   next.addEventListener('click', () => {
     const newUrl = url.split('page=');
     pageNumber = newUrl[1];
     pageNumber++;
     let nextPageUrl = `${newUrl[0]}page=${pageNumber}`;
-    console.log(nextPageUrl);
     url = nextPageUrl;
+    getPaginationMovies(url);
+  });
+
+  prev.addEventListener('click', () => {
+    const newUrl = url.split('page=');
+    pageNumber = newUrl[1];
+    if (pageNumber > 1) {
+      pageNumber--;
+      let nextPageUrl = `${newUrl[0]}page=${pageNumber}`;
+      url = nextPageUrl;
+      getPaginationMovies(url);
+    }
   });
 };
+
 export default createPagination;

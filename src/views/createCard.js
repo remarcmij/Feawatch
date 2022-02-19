@@ -1,11 +1,11 @@
 import createElement from '../helpers/createElement.js';
 import { fetchData } from '../helpers/fetchData.js';
 import createCardDetail from './createCardDetail.js';
+
 const createCard = (movie) => {
-  const { Poster, Title, Type, Year, imdbID } = movie;
+  const { Poster, Title, imdbID } = movie;
   const card = createElement('div', 'movie-card', 'movie-card');
   const movieImg = createElement('img', 'movie-img', 'movie-img');
-  console.log(Poster);
   if (Poster === 'N/A') {
     movieImg.src = './public/img/default-card-img.jpg';
   } else {
@@ -35,7 +35,6 @@ const createCard = (movie) => {
 const getCardDetail = async (url) => {
   try {
     const data = await fetchData(url);
-
     renderResult(data);
   } catch (error) {
     console.log(error);
