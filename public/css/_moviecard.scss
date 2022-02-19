@@ -28,6 +28,15 @@
     h1 {
       text-align: center;
     }
+    #see-more {
+      font-size: 2.4rem;
+    }
+    .fa-heart-crack {
+      transition: all 0.3s;
+      &:hover {
+        color: $darkRed;
+      }
+    }
   }
   &:hover {
     .movie-information {

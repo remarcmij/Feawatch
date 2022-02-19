@@ -266,6 +266,19 @@ footer .applications {
   text-align: center;
 }
 
+.movie-card .movie-information #see-more {
+  font-size: 2.4rem;
+}
+
+.movie-card .movie-information .fa-heart-crack {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.movie-card .movie-information .fa-heart-crack:hover {
+  color: #8b0300;
+}
+
 .movie-card:hover .movie-information {
   opacity: 0.9;
 }

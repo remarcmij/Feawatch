@@ -12,6 +12,8 @@ const getPaginationMovies = async (url) => {
         'Searched Movie Can not Found or There is no Search Yet';
       resultList.style.color = 'red';
     } else {
+      console.log(Search);
+      console.log(Search.length);
       renderResult(Search);
       createPagination(url);
     }
