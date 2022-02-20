@@ -48,10 +48,11 @@
     }
     #tooltip {
       transition: all 0.5s;
+      width: 90px;
       position: absolute;
       opacity: 0;
-      top: -70px;
-      left: -20px;
+      top: -55px;
+      left: -32px;
       background-color: $darkRed;
       color: $white;
       padding: 0.4rem;

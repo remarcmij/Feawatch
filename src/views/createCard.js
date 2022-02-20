@@ -1,8 +1,7 @@
 import addStorage from '../handlers/addLocalStorage.js';
 import deleteStorage from '../handlers/removeLocalStorage.js';
 import createElement from '../helpers/createElement.js';
-import { fetchData } from '../helpers/fetchData.js';
-import createCardDetail from './createCardDetail.js';
+import getCardDetail from '../handlers/getCardDetail.js';
 
 const createCard = (movie) => {
   const { Poster, Title, imdbID } = movie;
@@ -49,21 +48,6 @@ const createCard = (movie) => {
     }
   });
   return card;
-};
-
-const getCardDetail = async (url) => {
-  try {
-    const data = await fetchData(url);
-    renderResult(data);
-  } catch (error) {
-    console.log(error);
-  }
-};
-const renderResult = (data) => {
-  const resultList = document.getElementById('results');
-  resultList.innerHTML = '';
-  const detailCard = createCardDetail(data);
-  resultList.appendChild(detailCard);
 };
 
 export default createCard;

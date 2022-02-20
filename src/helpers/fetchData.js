@@ -1,5 +1,5 @@
 'use strict';
-
+// Fetch Data from Main API
 export async function fetchData(url) {
   const response = await fetch(url);
   if (!response.ok) {

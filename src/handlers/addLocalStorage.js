@@ -5,7 +5,9 @@ const addStorage = (imdbID) => {
   } else {
     movies = JSON.parse(localStorage.getItem('movies'));
   }
-  movies.push(imdbID);
+  if (movies.indexOf(imdbID) == -1) {
+    movies.push(imdbID);
+  }
   localStorage.setItem('movies', JSON.stringify(movies));
 };
 export default addStorage;
