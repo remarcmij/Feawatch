@@ -312,10 +312,11 @@ footer .applications {
 .movie-card .movie-information #tooltip {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  width: 90px;
   position: absolute;
   opacity: 0;
-  top: -70px;
-  left: -20px;
+  top: -55px;
+  left: -32px;
   background-color: #8b0300;
   color: #ffffff;
   padding: 0.4rem;
