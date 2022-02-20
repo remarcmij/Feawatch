@@ -27,9 +27,43 @@
     cursor: pointer;
     h1 {
       text-align: center;
+      font-size: 2.6rem;
     }
     #see-more {
-      font-size: 2.4rem;
+      font-size: 2.3rem;
+      color: $orangeExDarker;
+      transition: all 0.3s;
+      &:hover {
+        color: $orangeEx;
+        text-decoration: underline;
+      }
+    }
+    #favorite-movie {
+      position: relative;
+      &:hover {
+        #tooltip {
+          opacity: 0.8;
+        }
+      }
+    }
+    #tooltip {
+      transition: all 0.5s;
+      position: absolute;
+      opacity: 0;
+      top: -70px;
+      left: -20px;
+      background-color: $darkRed;
+      color: $white;
+      padding: 0.4rem;
+      clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% 92%,
+        67% 92%,
+        49% 100%,
+        32% 92%,
+        0 92%
+      );
     }
     .fa-heart-crack {
       transition: all 0.3s;

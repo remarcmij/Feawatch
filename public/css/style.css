@@ -264,10 +264,41 @@ footer .applications {
 
 .movie-card .movie-information h1 {
   text-align: center;
+  font-size: 2.6rem;
 }
 
 .movie-card .movie-information #see-more {
-  font-size: 2.4rem;
+  font-size: 2.3rem;
+  color: #be9800;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.movie-card .movie-information #see-more:hover {
+  color: #ffcb04;
+  text-decoration: underline;
+}
+
+.movie-card .movie-information #favorite-movie {
+  position: relative;
+}
+
+.movie-card .movie-information #favorite-movie:hover #tooltip {
+  opacity: 0.8;
+}
+
+.movie-card .movie-information #tooltip {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  position: absolute;
+  opacity: 0;
+  top: -70px;
+  left: -20px;
+  background-color: #8b0300;
+  color: #ffffff;
+  padding: 0.4rem;
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 67% 92%, 49% 100%, 32% 92%, 0 92%);
+          clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 67% 92%, 49% 100%, 32% 92%, 0 92%);
 }
 
 .movie-card .movie-information .fa-heart-crack {

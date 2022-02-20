@@ -21,16 +21,19 @@ const createCard = (movie) => {
   );
   const movieTitle = createElement('h1');
   movieTitle.textContent = Title;
-  const movieContent = createElement('p', 'see-more');
-  movieContent.textContent = 'See More';
+  const seeMore = createElement('p', 'see-more');
+  seeMore.textContent = 'See More';
   const favorite = createElement('p', 'favorite-movie');
-  favorite.innerHTML = `<i id="fav-movie" class="fa-solid fa-3x fa-heart-crack"></i>`;
+  favorite.innerHTML = `<i id="fav-movie" class="fa-solid fa-2x fa-heart-crack"></i>`;
+  const toolTipText = createElement('p', 'tooltip');
+  toolTipText.textContent = 'Add Favorite';
+  favorite.appendChild(toolTipText);
   card.appendChild(movieImg);
   card.appendChild(movieInformation);
   movieInformation.appendChild(movieTitle);
-  movieInformation.appendChild(movieContent);
   movieInformation.appendChild(favorite);
-  movieContent.addEventListener('click', async () => {
+  movieInformation.appendChild(seeMore);
+  seeMore.addEventListener('click', async () => {
     const url = `https://www.omdbapi.com/?apikey=859c6fe2&i=${imdbID}&plot=full`;
     await getCardDetail(url);
   });
