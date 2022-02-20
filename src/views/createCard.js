@@ -22,7 +22,7 @@ const createCard = (movie) => {
   const movieTitle = createElement('h1');
   movieTitle.textContent = Title;
   const seeMore = createElement('p', 'see-more');
-  seeMore.textContent = 'See More';
+  seeMore.textContent = 'See Detail';
   const favorite = createElement('p', 'favorite-movie');
   favorite.innerHTML = `<i id="fav-movie" class="fa-solid fa-2x fa-heart-crack"></i>`;
   const toolTipText = createElement('p', 'tooltip');

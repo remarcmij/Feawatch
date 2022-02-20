@@ -13,6 +13,8 @@
     #search-button {
       padding: 0.5rem;
       margin: 0.5rem;
+      background-color: $white;
+      border: none;
     }
     #search-input {
       width: 30%;
@@ -20,15 +22,10 @@
     #search-by-category {
       width: 10%;
     }
-    #dateSelect,
-    #search-button {
-      background-color: $orangeEx;
-    }
     #search-button {
       width: 5%;
       height: 50px;
       cursor: pointer;
-      border: none;
       clip-path: polygon(
         0% 20%,
         60% 20%,
