@@ -73,6 +73,8 @@ header p {
 .container .search-bar #search-button {
   padding: 0.5rem;
   margin: 0.5rem;
+  background-color: #ffffff;
+  border: none;
 }
 
 .container .search-bar #search-input {
@@ -83,16 +85,10 @@ header p {
   width: 10%;
 }
 
-.container .search-bar #dateSelect,
-.container .search-bar #search-button {
-  background-color: #ffcb04;
-}
-
 .container .search-bar #search-button {
   width: 5%;
   height: 50px;
   cursor: pointer;
-  border: none;
   -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
           clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
   -webkit-transition: all 0.5s;
@@ -173,6 +169,32 @@ footer .applications {
 
 #card-detail-container #card-detail-content-wrapper {
   padding: 1rem;
+}
+
+/* MOBILE*/
+@media (max-width: 767px) {
+  #card-detail-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #card-detail-container #card-detail-img {
+    width: 90%;
+  }
+}
+
+/* IPAD*/
+@media (min-width: 768px) and (max-width: 1024px) {
+  #card-detail-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #card-detail-container #card-detail-img {
+    width: 90%;
+  }
 }
 
 #pagination {
@@ -264,10 +286,41 @@ footer .applications {
 
 .movie-card .movie-information h1 {
   text-align: center;
+  font-size: 2.6rem;
 }
 
 .movie-card .movie-information #see-more {
-  font-size: 2.4rem;
+  font-size: 2.3rem;
+  color: #be9800;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.movie-card .movie-information #see-more:hover {
+  color: #ffcb04;
+  text-decoration: underline;
+}
+
+.movie-card .movie-information #favorite-movie {
+  position: relative;
+}
+
+.movie-card .movie-information #favorite-movie:hover #tooltip {
+  opacity: 0.8;
+}
+
+.movie-card .movie-information #tooltip {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  position: absolute;
+  opacity: 0;
+  top: -70px;
+  left: -20px;
+  background-color: #8b0300;
+  color: #ffffff;
+  padding: 0.4rem;
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 67% 92%, 49% 100%, 32% 92%, 0 92%);
+          clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 67% 92%, 49% 100%, 32% 92%, 0 92%);
 }
 
 .movie-card .movie-information .fa-heart-crack {
