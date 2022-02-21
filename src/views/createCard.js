@@ -2,6 +2,7 @@ import addStorage from '../utils/addLocalStorage.js';
 import deleteStorage from '../utils/removeLocalStorage.js';
 import createElement from '../helpers/createElement.js';
 import getCardDetail from '../handlers/getCardDetail.js';
+import createPopUp from './createPopUp.js';
 
 const createCard = (movie) => {
   const { Poster, Title, imdbID } = movie;
@@ -49,10 +50,14 @@ const createCard = (movie) => {
   favorite.addEventListener('click', () => {
     if (isFavorited) {
       deleteStorage(imdbID);
+      favorite.appendChild(
+        createPopUp(favorite, 'Video Removed from Favorites'),
+      );
       isFavorited = false;
     } else {
       isFavorited = true;
       console.log('Favorited');
+      favorite.appendChild(createPopUp(favorite, 'Movie Favorited'));
       addStorage(imdbID);
     }
   });

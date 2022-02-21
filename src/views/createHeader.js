@@ -1,5 +1,5 @@
 import createElement from '../helpers/createElement.js';
-import createPopUp from '../helpers/createPopUp.js';
+import createPopUp from './createPopUp.js';
 
 const createHeader = () => {
   const header = createElement('header');
@@ -10,15 +10,13 @@ const createHeader = () => {
   const aElement = createElement('a', 'register');
 
   pElement.textContent = 'FeaWatch is a movie search platform.';
-  aElement.textContent = 'Register/Sign In';
+  aElement.innerHTML =
+    '<i class="fa-solid fa-user-plus"></i> <i class="fa-solid fa-right-to-bracket"></i>';
 
   aElement.addEventListener('click', () => {
-    document.body.appendChild(createPopUp());
-
-    setTimeout(() => {
-      const popup = document.getElementById('popup-container');
-      document.body.removeChild(popup);
-    }, 2000);
+    document.body.appendChild(
+      createPopUp(document.body, 'It has not implemented yet'),
+    );
   });
 
   header.appendChild(logo);

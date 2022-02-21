@@ -28,7 +28,12 @@ header a {
   cursor: pointer;
 }
 
-header a:hover {
+header a i {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+header a i:hover {
   color: #e50914;
 }
 

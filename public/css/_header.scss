@@ -9,8 +9,11 @@ header {
   a {
     color: $black;
     cursor: pointer;
-    &:hover {
-      color: $red;
+    i {
+      transition: all 0.3s;
+      &:hover {
+        color: $red;
+      }
     }
   }
   p {
