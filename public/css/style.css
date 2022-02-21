@@ -156,7 +156,11 @@ footer .applications img {
 }
 
 #card-detail-container {
-  width: 80%;
+  top: 0;
+  z-index: 9999;
+  position: absolute;
+  width: 99%;
+  height: 100vh;
   color: #e5e5e5;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -164,7 +168,7 @@ footer .applications img {
   border: solid 2px #8b0300;
   -webkit-transition: all 1s;
   transition: all 1s;
-  background-color: rgba(139, 3, 0, 0.3);
+  background-color: rgba(20, 20, 20, 0.9);
 }
 
 #card-detail-container:hover {
@@ -173,11 +177,22 @@ footer .applications img {
 
 #card-detail-container #card-detail-img {
   margin: 1rem;
-  height: 30%;
 }
 
 #card-detail-container #card-detail-content-wrapper {
   padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#card-detail-container #card-detail-content-wrapper i {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 /* MOBILE*/
@@ -250,6 +265,7 @@ footer .applications img {
       -ms-flex-align: center;
           align-items: center;
   padding: 2rem;
+  position: relative;
 }
 
 .movie-card {

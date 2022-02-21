@@ -1,6 +1,7 @@
+import closePopUp from '../helpers/closePopUp.js';
 import createElement from '../helpers/createElement.js';
 
-const createCardDetail = (data) => {
+const createCardDetail = (data, resultList) => {
   const {
     Title,
     Year,
@@ -31,10 +32,11 @@ const createCardDetail = (data) => {
   const cardDetailDirector = createElement('p', 'card-detail-director');
   const cardDetailWriter = createElement('p', 'card-detail-writer');
   const cardDetailActors = createElement('p', 'card-detail-actors');
-
+  const crossIcon = createElement('i', '', 'fa-solid fa-2x fa-xmark');
   //Execute UI
   cardDetailContainer.appendChild(cardDetailImg);
   cardDetailContainer.appendChild(cardDetailContentWrapper);
+  cardDetailContentWrapper.appendChild(crossIcon);
   cardDetailContentWrapper.appendChild(cardDetailTitle);
   cardDetailContentWrapper.appendChild(cardDetailYear);
   cardDetailContentWrapper.appendChild(cardDetailLanguage);
@@ -63,6 +65,10 @@ const createCardDetail = (data) => {
   cardDetailWriter.textContent = `Writer : ${Writer}`;
   cardDetailActors.textContent = `Actors : ${Actors}`;
   cardDetailDescription.textContent = `Description : ${Plot}`;
+
+  crossIcon.addEventListener('click', () => {
+    closePopUp(resultList, cardDetailContainer);
+  });
 
   return cardDetailContainer;
 };
