@@ -1,7 +1,10 @@
 const createDate = (selectId) => {
   let date = 2022;
+
   const selectElement = document.getElementById(selectId);
-  selectElement.innerHTML = `<option value="">Select Date</option>`;
+
+  selectElement.innerHTML = `<option value="">Filter By Year</option>`;
+
   while (date > 1980) {
     selectElement.innerHTML += `
     <option value="${date}">${date}</option>`;

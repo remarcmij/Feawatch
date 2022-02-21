@@ -1,7 +1,6 @@
 import createElement from '../helpers/createElement.js';
 
 const createCardDetail = (data) => {
-  console.log(data);
   const {
     Title,
     Year,
@@ -14,6 +13,7 @@ const createCardDetail = (data) => {
     Poster,
     imdbRating,
   } = data;
+
   const cardDetailContainer = createElement('div', 'card-detail-container');
   const cardDetailImg = createElement('img', 'card-detail-img');
   const cardDetailContentWrapper = createElement(
@@ -52,6 +52,7 @@ const createCardDetail = (data) => {
   } else {
     cardDetailImg.src = Poster;
   }
+
   cardDetailImg.setAttribute('alt', Title);
   cardDetailTitle.textContent = `Movie Title :${Title}`;
   cardDetailYear.textContent = `Created : ${Year}`;

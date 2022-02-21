@@ -3,6 +3,7 @@ import createCard from '../views/createCard.js';
 const renderFavoriteResult = (favMovie) => {
   const resultList = document.getElementById('results');
   const card = createCard(favMovie);
+
   resultList.appendChild(card);
 };
 export default renderFavoriteResult;
