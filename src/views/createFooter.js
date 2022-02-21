@@ -1,5 +1,5 @@
 import createElement from '../helpers/createElement.js';
-import createPopUp from '../helpers/createPopUp.js';
+import createPopUp from './createPopUp.js';
 
 const createFooter = () => {
   const footer = createElement('footer');
@@ -10,13 +10,8 @@ const createFooter = () => {
   gPlayImg.setAttribute('alt', 'googleplay');
 
   gPlayImg.addEventListener('click', () => {
-    const popup = createPopUp();
+    const popup = createPopUp(applications, 'It has not implemented yet');
     applications.appendChild(popup);
-
-    setTimeout(() => {
-      const popup = document.getElementById('popup-container');
-      applications.removeChild(popup);
-    }, 2000);
   });
   const copyRight = createElement('div', 'copy-right', 'copy-right');
 

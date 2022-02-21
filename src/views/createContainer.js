@@ -9,7 +9,7 @@ const createContainer = () => {
   const selectBoxCategory = createElement('select', 'search-by-category');
   const selectBoxDate = createElement('select', 'dateSelect');
   const searchButton = createElement('button', 'search-button');
-  searchButton.textContent = 'Search';
+  searchButton.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i>Search`;
 
   // Result UI Creation Steps
   const results = createElement('div', 'results', 'results');
