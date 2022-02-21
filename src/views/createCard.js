@@ -43,6 +43,7 @@ const createCard = (movie) => {
   seeMore.addEventListener('click', async () => {
     const url = `https://www.omdbapi.com/?apikey=859c6fe2&i=${imdbID}&plot=full`;
     await getCardDetail(url);
+    window.scrollTo(0, 164);
   });
 
   let isFavorited = false;
