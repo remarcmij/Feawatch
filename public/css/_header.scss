@@ -8,6 +8,7 @@ header {
   border-bottom: 6px solid $darkRed;
   a {
     color: $black;
+    cursor: pointer;
     &:hover {
       color: $red;
     }

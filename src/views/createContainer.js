@@ -18,10 +18,16 @@ const createContainer = () => {
   container.appendChild(searchBar);
   container.appendChild(results);
   searchBar.appendChild(searchInput);
+  searchBar.appendChild(searchButton);
   searchBar.appendChild(selectBoxCategory);
   searchBar.appendChild(selectBoxDate);
-  searchBar.appendChild(searchButton);
+
   searchButton.addEventListener('click', getSearchQueries);
+  searchInput.addEventListener('keypress', (e) => {
+    if (e.charCode === 13) {
+      getSearchQueries();
+    }
+  });
 
   return container;
 };

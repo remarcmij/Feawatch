@@ -7,6 +7,7 @@ const getMovies = async (title = '', type = '', year = '', page = '1') => {
   try {
     const url = `${API_URL}&s=${title}&type=${type}&y=${year}&page=${page}`;
     const { Search } = await fetchData(url);
+
     if (Search === undefined) {
       console.log('Movie can not find');
       const resultList = document.getElementById('results');

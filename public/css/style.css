@@ -4,6 +4,7 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: 'Stardos Stencil', cursive;
+  position: relative;
 }
 
 header {
@@ -24,6 +25,7 @@ header {
 
 header a {
   color: #141414;
+  cursor: pointer;
 }
 
 header a:hover {
@@ -87,10 +89,7 @@ header p {
 
 .container .search-bar #search-button {
   width: 5%;
-  height: 50px;
   cursor: pointer;
-  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
-          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -132,7 +131,7 @@ footer {
 }
 
 footer .applications {
-  margin-top: 1rem;
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -144,6 +143,11 @@ footer .applications {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+footer .applications img {
+  width: 40%;
+  cursor: pointer;
 }
 
 #card-detail-container {
@@ -324,12 +328,12 @@ footer .applications {
           clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 67% 92%, 49% 100%, 32% 92%, 0 92%);
 }
 
-.movie-card .movie-information .fa-heart-crack {
+.movie-card .movie-information .fa-heart {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
-.movie-card .movie-information .fa-heart-crack:hover {
+.movie-card .movie-information .fa-heart:hover {
   color: #8b0300;
 }
 
@@ -352,5 +356,35 @@ footer .applications {
   .movie-card {
     width: 47% !important;
   }
+}
+
+#popup-container {
+  position: absolute;
+  top: 35px;
+  right: 10px;
+  color: #e5e5e5;
+  z-index: 9999;
+  background-color: #8b0300;
+  width: 150px;
+  height: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+#welcome-container {
+  background-color: rgba(255, 203, 4, 0.3);
+  color: #e5e5e5;
+  border-radius: 10px;
+  padding: 4rem;
+  margin-top: 3%;
 }
 /*# sourceMappingURL=style.css.map */

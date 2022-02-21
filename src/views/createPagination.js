@@ -17,16 +17,21 @@ const createPagination = (url) => {
 
   next.addEventListener('click', () => {
     const newUrl = url.split('page=');
+
     pageNumber = newUrl[1];
     pageNumber++;
+
     let nextPageUrl = `${newUrl[0]}page=${pageNumber}`;
     url = nextPageUrl;
+
     getPaginationMovies(url);
   });
 
   prev.addEventListener('click', () => {
     const newUrl = url.split('page=');
+
     pageNumber = newUrl[1];
+
     if (pageNumber > 1) {
       pageNumber--;
       let nextPageUrl = `${newUrl[0]}page=${pageNumber}`;
