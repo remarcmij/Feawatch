@@ -1,0 +1,6 @@
+#fav-movie-icon {
+  cursor: pointer !important;
+  &:hover {
+    color: $darkRed;
+  }
+}
