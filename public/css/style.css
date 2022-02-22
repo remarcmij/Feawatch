@@ -23,6 +23,10 @@ header {
   border-bottom: 6px solid #8b0300;
 }
 
+header .fa-folder-heart {
+  color: #141414;
+}
+
 header a {
   color: #141414;
   cursor: pointer;
@@ -409,5 +413,13 @@ footer .applications img {
   border-radius: 10px;
   padding: 4rem;
   margin-top: 3%;
+}
+
+#fav-movie-icon {
+  cursor: pointer !important;
+}
+
+#fav-movie-icon:hover {
+  color: #8b0300;
 }
 /*# sourceMappingURL=style.css.map */

@@ -6,6 +6,9 @@ header {
   background-color: $orangeEx;
   padding: 1rem;
   border-bottom: 6px solid $darkRed;
+  .fa-folder-heart {
+    color: $black;
+  }
   a {
     color: $black;
     cursor: pointer;
