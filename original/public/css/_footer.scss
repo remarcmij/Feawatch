@@ -1,0 +1,18 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $orangeEx;
+  .applications {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    img {
+      width: 40%;
+      cursor: pointer;
+    }
+  }
+}

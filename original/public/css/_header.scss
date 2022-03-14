@@ -1,0 +1,35 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $black;
+  background-color: $orangeEx;
+  padding: 1rem;
+  border-bottom: 6px solid $darkRed;
+  .fa-folder-heart {
+    color: $black;
+  }
+  a {
+    color: $black;
+    cursor: pointer;
+    i {
+      transition: all 0.3s;
+      &:hover {
+        color: $red;
+      }
+    }
+  }
+  p {
+    padding: 1rem;
+    color: rgba($black, 0.8);
+  }
+}
+/* MOBILE*/
+@media (max-width: 767px) {
+  header {
+    flex-direction: column;
+    p {
+      display: none;
+    }
+  }
+}
