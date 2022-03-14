@@ -27,3 +27,14 @@ From: https://code-boxx.com/rotate-spin-image-html-css/#sec-animate
   color: #fff;
   text-shadow: 1px 1px 1px #ccc;
 }
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.pagination button {
+  margin: 0 4px;
+}

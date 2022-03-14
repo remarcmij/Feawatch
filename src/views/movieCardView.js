@@ -1,10 +1,13 @@
 function createMovieCardView(props) {
   const { Poster, Title } = props;
 
+  const imgSrc =
+    Poster === 'N/A' ? '../../public/img/default-card-img.jpg' : Poster;
+
   const root = document.createElement('div');
   root.className = 'movie-card';
   root.innerHTML = String.raw`
-    <img class="movie-img" src="${Poster}" alt="${Title}">
+    <img class="movie-img" src="${imgSrc}" alt="${Title}">
     <div class="movie-information">
       <h1>${Title}</h1>
       <p id="favorite-movie">

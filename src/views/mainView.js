@@ -2,6 +2,7 @@ import createFooterView from './footerView.js';
 import createHeaderView from './headerView.js';
 import createLoadingIndicator from './loadingIndicator.js';
 import createMovieCardView from './movieCardView.js';
+import createPaginationView from './paginationView.js';
 import createSearchBarView from './searchBarView.js';
 import createWelcomeView from './welcomeView.js';
 
@@ -25,20 +26,23 @@ function createMainView(props) {
   results.appendChild(welcomeView.root);
   container.appendChild(results);
 
+  const paginationView = createPaginationView(props);
+  container.appendChild(paginationView.root);
+
   const footer = createFooterView();
   root.appendChild(footer.root);
 
   let loadingIndicator = null;
 
-  const update = (data) => {
-    console.log('main view update:', data);
+  const update = (state) => {
+    console.log('main view update:', state);
 
-    if (data.error) {
-      console.log(data.error);
+    if (state.error) {
+      console.log(state.error);
       return;
     }
 
-    if (data.loading) {
+    if (state.loading) {
       loadingIndicator = createLoadingIndicator().root;
       root.appendChild(loadingIndicator);
       return;
@@ -50,10 +54,14 @@ function createMainView(props) {
     }
 
     results.innerHTML = '';
-    data.movies.Search.forEach((movie) => {
+    window.scrollTo(0, 0);
+
+    state.movies?.Search.forEach((movie) => {
       const cardView = createMovieCardView(movie);
       results.appendChild(cardView.root);
     });
+
+    paginationView.update(state);
   };
 
   return { root, update };

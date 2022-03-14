@@ -1,5 +1,6 @@
 function createWelcomeView() {
   const root = document.createElement('div');
+  root.id = 'welcome-container';
   root.innerHTML = String.raw`
     <h1>You have no favorited video yet</h1>
     <p>

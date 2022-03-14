@@ -1,24 +1,22 @@
 import fetchMovies from '../fetchers/fetchMovies.js';
 import createMainView from '../views/mainView.js';
 
-function createMainPage() {
-  const data = {};
-
+function createMainPage(state) {
   const getMovies = async () => {
-    const { title, type, year, page } = data;
+    const { title, type, year, page } = state;
 
-    data.error = null;
-    data.loading = true;
+    state.error = null;
+    state.loading = true;
 
-    mainView.update(data);
+    mainView.update(state);
 
     try {
-      data.movies = await fetchMovies(title, type, year, page);
+      state.movies = await fetchMovies(title, type, year, page);
     } catch (err) {
-      data.error = err;
+      state.error = err;
     } finally {
-      data.loading = false;
-      mainView.update(data);
+      state.loading = false;
+      mainView.update(state);
     }
   };
 
@@ -26,7 +24,7 @@ function createMainPage() {
   // Event handlers
   //
   const onInput = (e) => {
-    data.title = e.target.value;
+    state.title = e.target.value;
   };
 
   const onKeypress = (e) => {
@@ -40,12 +38,22 @@ function createMainPage() {
   };
 
   const onCategoryChange = (e) => {
-    data.type = e.target.value;
+    state.type = e.target.value;
   };
 
   const onDateChange = (e) => {
-    data.date = e.target.value;
+    state.date = e.target.value;
     console.log('date', e.target.value);
+  };
+
+  const onNext = () => {
+    state.page += 1;
+    getMovies();
+  };
+
+  const onPrev = () => {
+    state.page -= 1;
+    getMovies();
   };
 
   // Create the main view and pass it the expected event handlers
@@ -55,6 +63,8 @@ function createMainPage() {
     onSearchButton,
     onCategoryChange,
     onDateChange,
+    onNext,
+    onPrev,
   });
 
   return mainView;
