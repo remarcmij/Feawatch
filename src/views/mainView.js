@@ -1,3 +1,4 @@
+import { DEBUG } from '../constants.js';
 import createFooterView from './footerView.js';
 import createHeaderView from './headerView.js';
 import createLoadingIndicator from './loadingIndicator.js';
@@ -32,25 +33,26 @@ function createMainView(props) {
   const footer = createFooterView();
   root.appendChild(footer.root);
 
-  let loadingIndicator = null;
+  const loadingIndicator = createLoadingIndicator();
+  root.appendChild(loadingIndicator.root);
+  loadingIndicator.root.hidden = true;
 
   const update = (state) => {
-    console.log('main view update:', state);
-
-    if (state.error) {
-      console.log(state.error);
-      return;
+    if (DEBUG) {
+      console.log('main view update:', state);
     }
 
     if (state.loading) {
-      loadingIndicator = createLoadingIndicator().root;
-      root.appendChild(loadingIndicator);
+      loadingIndicator.root.hidden = false;
       return;
     }
 
-    if (loadingIndicator) {
-      root.removeChild(loadingIndicator);
-      loadingIndicator = null;
+    loadingIndicator.root.hidden = true;
+
+    if (state.error) {
+      // TODO: render error to the page
+      console.log(state.error);
+      return;
     }
 
     results.innerHTML = '';

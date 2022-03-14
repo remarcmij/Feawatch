@@ -7,17 +7,16 @@ function createMainPage(state) {
 
     state.error = null;
     state.loading = true;
-
     mainView.update(state);
 
     try {
       state.movies = await fetchMovies(title, type, year, page);
     } catch (err) {
       state.error = err;
-    } finally {
-      state.loading = false;
-      mainView.update(state);
     }
+
+    state.loading = false;
+    mainView.update(state);
   };
 
   //
