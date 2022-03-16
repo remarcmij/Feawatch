@@ -1,6 +1,6 @@
 import fetchMovieDetails from '../fetchers/fetchMovieDetails.js';
 import { navigateTo } from '../lib/hashRouter.js';
-import logger from '../lib/logger.js';
+import log from '../lib/logger.js';
 import createDetailView from '../views/detailView.js';
 
 function createDetailPage(state, imdbID) {
@@ -19,7 +19,7 @@ function createDetailPage(state, imdbID) {
     try {
       state.movie = await fetchMovieDetails(imdbID);
     } catch (err) {
-      logger.error('detailPage', err.message);
+      log.error('detailPage', err.message);
       navigateTo('error');
       return;
     }

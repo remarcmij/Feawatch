@@ -1,5 +1,6 @@
 import fetchMovies from '../fetchers/fetchMovies.js';
 import { navigateTo } from '../lib/hashRouter.js';
+import log from '../lib/logger.js';
 import createMainView from '../views/mainView.js';
 
 function createMainPage(state) {
@@ -14,6 +15,9 @@ function createMainPage(state) {
       state.movies = await fetchMovies(title, type, year, page);
     } catch (err) {
       state.error = err;
+      log.error('detailPage', err.message);
+      navigateTo('error');
+      return;
     }
 
     state.loading = false;
