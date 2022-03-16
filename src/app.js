@@ -1,5 +1,5 @@
-//@ts-check
 import createRouter from './lib/hashRouter.js';
+import log from './lib/logger.js';
 import routes from './pages/routes.js';
 
 const initialState = {
@@ -10,12 +10,16 @@ const initialState = {
 };
 
 const loadApp = () => {
+  log.setLevel('silly');
+  log.info('application', 'started');
+
   const appRoot = document.getElementById('app-root');
   const routerOutlet = document.createElement('div');
   routerOutlet.id = 'router-outlet';
   appRoot.appendChild(routerOutlet);
 
-  createRouter(routes, routerOutlet, { ...initialState });
+  const router = createRouter(routes, routerOutlet, { ...initialState });
+  router.start();
 };
 
 window.addEventListener('load', loadApp);

@@ -1,4 +1,4 @@
-import { DEBUG } from '../constants.js';
+import log from '../lib/logger.js';
 import createFooterView from './footerView.js';
 import createHeaderView from './headerView.js';
 import createLoadingIndicator from './loadingIndicator.js';
@@ -38,9 +38,7 @@ function createMainView(props) {
   loadingIndicator.root.hidden = true;
 
   const update = (state) => {
-    if (DEBUG) {
-      console.log('main view update:', state);
-    }
+    log.debug('mainView', 'update:', state);
 
     if (state.loading) {
       loadingIndicator.root.hidden = false;
@@ -59,7 +57,7 @@ function createMainView(props) {
     window.scrollTo(0, 0);
 
     state.movies?.Search.forEach((movie) => {
-      const cardView = createMovieCardView(movie);
+      const cardView = createMovieCardView({ ...props, movie });
       results.appendChild(cardView.root);
     });
 

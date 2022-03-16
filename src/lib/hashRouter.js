@@ -4,14 +4,16 @@
  * There should be no reason to make any changes to this file.
  */
 
+import log from './logger.js';
+
 /**
  * Navigates to a specified page.
  * @param {string} pageName The name of the page to load.
- * @param {*} args First arg is the pathname, any remaining args are
- * passed to the page creator function.
+ * @param {*} params Parameters to be passed to the Page function.
  */
-export const navigateTo = (pageName, ...args) => {
-  const encodedHash = encodeURI('#' + [pageName, ...args].join('/'));
+export const navigateTo = (pageName, ...params) => {
+  log.debug('router navigate', 'path:', pageName, 'params:', [...params]);
+  const encodedHash = encodeURI('#' + [pageName, ...params].join('/'));
   window.location.assign(encodedHash);
 };
 
@@ -21,9 +23,9 @@ const getRouteParts = () => {
   return [path, ...rest];
 };
 
-/** @typedef {(data: object, action?: string) => void} UpdateCallback*/
+/** @typedef {(state: object) => void} UpdateCallback*/
 /** @typedef {{root: HTMLElement, update?: UpdateCallback}} ViewObject*/
-/** @typedef {(state?: object, data?: object) => ViewObject} PageFunction */
+/** @typedef {(state: object, ...params: any) => ViewObject} PageFunction */
 /** @typedef {{path: string, page: PageFunction, default?: boolean}} Route */
 
 /**
@@ -64,7 +66,8 @@ function createRouter(routes, routerOutlet, state = {}) {
     // Create the page corresponding to the route.
     // The page creation function is expected to return its root element
     // in the root property of the returned object.
-    const { root } = route.page(state, params);
+    log.debug('router load', 'path:', pathname, 'params:', [...params], state);
+    const { root } = route.page(state, ...params);
 
     // Clear the content router outlet container and append the page
     // root element as its new child.
@@ -72,8 +75,27 @@ function createRouter(routes, routerOutlet, state = {}) {
     routerOutlet.appendChild(root);
   }); // end of event handler
 
-  // Kickstart the router at creation time.
-  window.dispatchEvent(new Event('hashchange'));
+  const initialState = { ...state };
+
+  log.info('router created', 'initial state:', initialState);
+
+  if (log.isMinLevel('debug')) {
+    // Log the routes table to the console
+    console.log('Routes Table:');
+    const displayRoutes = routes.map((route) => ({
+      ...route,
+      page: route.page.name,
+    }));
+    console.table(displayRoutes);
+  }
+
+  return {
+    start() {
+      // Start the router
+      log.debug('router', 'started');
+      window.dispatchEvent(new Event('hashchange'));
+    },
+  };
 }
 
 export default createRouter;

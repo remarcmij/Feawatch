@@ -1,4 +1,5 @@
 import fetchMovies from '../fetchers/fetchMovies.js';
+import { navigateTo } from '../lib/hashRouter.js';
 import createMainView from '../views/mainView.js';
 
 function createMainPage(state) {
@@ -55,6 +56,10 @@ function createMainPage(state) {
     getMovies();
   };
 
+  const onSeeMore = (movie) => {
+    navigateTo('detail', movie.imdbID);
+  };
+
   // Create the main view and pass it the expected event handlers
   const mainView = createMainView({
     onInput,
@@ -64,7 +69,12 @@ function createMainPage(state) {
     onDateChange,
     onNext,
     onPrev,
+    onSeeMore,
   });
+
+  if (state.title) {
+    getMovies();
+  }
 
   return mainView;
 }

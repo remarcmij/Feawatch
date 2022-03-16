@@ -1,5 +1,5 @@
 //@ts-check
-import { DEBUG } from '../constants.js';
+import log from './logger.js';
 
 /**
  * This file is provided ready-made for use in your application by HackYourFuture.
@@ -8,35 +8,33 @@ import { DEBUG } from '../constants.js';
 const cache = new Map();
 
 /**
- * Fetch data using an HTTP GET request.
+ * Fetch data using an HTTP GET request and optionally cache the response.
  * @param {string} url The url to fetch from.
  */
-export async function fetchData(url) {
+async function fetchData(url, options = {}) {
+  let data;
+
+  if (options.cache) {
+    data = cache.get(url);
+    if (data) {
+      log.debug('fetchData', 'cache hit:', url);
+      return data;
+    }
+    log.debug('fetchData', 'cache miss:', url);
+  }
+
   const res = await fetch(url);
   if (!res.ok) {
     throw new Error(`HTTP ${res.status}  ${res.statusText}`);
   }
-  return res.json();
-}
 
-/**
- * Fetch data using an HTTP GET request and cache the response.
- * @param {string} url The url to fetch from.
- */
-export async function fetchCachedData(url) {
-  let data = cache.get(url);
-  if (data) {
-    if (DEBUG) {
-      console.log(`cache hit: ${url}`);
-    }
-    return data;
+  data = await res.json();
+
+  if (options.cache) {
+    cache.set(url, data);
   }
 
-  if (DEBUG) {
-    console.warn(`cache miss: ${url}`);
-  }
-
-  data = await fetchData(url);
-  cache.set(url, data);
   return data;
 }
+
+export default fetchData;

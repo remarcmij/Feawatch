@@ -24,7 +24,7 @@ From: https://code-boxx.com/rotate-spin-image-html-css/#sec-animate
   /* linear | ease | ease-in | ease-out | ease-in-out */
   animation-timing-function: linear;
 
-  color: #fff;
+  color: green;
   text-shadow: 1px 1px 1px #ccc;
 }
 
