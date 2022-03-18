@@ -1,34 +1,31 @@
 import fetchMovies from '../fetchers/fetchMovies.js';
-import { navigateTo } from '../lib/hashRouter.js';
+import router from '../lib/router.js';
 import log from '../lib/logger.js';
 import createMainView from '../views/mainView.js';
 
-function createMainPage(state) {
+function createMainPage() {
   const getMovies = async () => {
-    const { title, type, year, page } = state;
+    const { title, type, year, page } = router.getState();
 
-    state.error = null;
-    state.loading = true;
-    mainView.update(state);
+    router.updateState({ error: null, loading: true });
 
     try {
-      state.movies = await fetchMovies(title, type, year, page);
-    } catch (err) {
-      state.error = err;
-      log.error('detailPage', err.message);
-      navigateTo('error');
-      return;
+      const movies = await fetchMovies(title, type, year, page);
+      router.updateState({ movies, loading: false });
+    } catch (error) {
+      router.updateState({ error, loading: false });
+      log.error('detailPage', error.message);
+      router.navigateTo('error');
+      // return;
+      throw error;
     }
-
-    state.loading = false;
-    mainView.update(state);
   };
 
   //
   // Event handlers
   //
   const onInput = (e) => {
-    state.title = e.target.value;
+    router.updateState({ title: e.target.value });
   };
 
   const onKeypress = (e) => {
@@ -42,26 +39,29 @@ function createMainPage(state) {
   };
 
   const onCategoryChange = (e) => {
-    state.type = e.target.value;
+    router.updateState({ type: e.target.value });
   };
 
   const onDateChange = (e) => {
-    state.date = e.target.value;
-    console.log('date', e.target.value);
+    router.updateState({ date: e.target.value });
   };
 
   const onNext = () => {
-    state.page += 1;
+    let { page } = router.getState();
+    page += 1;
+    router.updateState({ page });
     getMovies();
   };
 
   const onPrev = () => {
-    state.page -= 1;
+    let { page } = router.getState();
+    page -= 1;
+    router.updateState({ page });
     getMovies();
   };
 
   const onSeeMore = (movie) => {
-    navigateTo('detail', movie.imdbID);
+    router.navigateTo('detail', movie.imdbID);
   };
 
   // Create the main view and pass it the expected event handlers
@@ -76,7 +76,7 @@ function createMainPage(state) {
     onSeeMore,
   });
 
-  if (state.title) {
+  if (router.getState().title) {
     getMovies();
   }
 

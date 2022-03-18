@@ -1,4 +1,3 @@
-import log from '../lib/logger.js';
 import createLoadingIndicator from './loadingIndicator.js';
 
 function createDetailView(props) {
@@ -39,8 +38,6 @@ function createDetailView(props) {
   };
 
   const update = (state) => {
-    log.debug('detailView', 'update:', state);
-
     if (state.loading) {
       loadingIndicator.root.hidden = false;
       return;
@@ -48,10 +45,10 @@ function createDetailView(props) {
 
     loadingIndicator.root.hidden = true;
 
-    if (state.error) {
-      throw new Error('Unexpected call to `update()`');
+    if (state.error || !state.movie) {
+      return;
     }
-    // handle loading
+
     render(state.movie);
   };
 

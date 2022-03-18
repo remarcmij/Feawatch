@@ -1,4 +1,3 @@
-import log from '../lib/logger.js';
 import createFooterView from './footerView.js';
 import createHeaderView from './headerView.js';
 import createLoadingIndicator from './loadingIndicator.js';
@@ -38,8 +37,6 @@ function createMainView(props) {
   loadingIndicator.root.hidden = true;
 
   const update = (state) => {
-    log.debug('mainView', 'update:', state);
-
     if (state.loading) {
       loadingIndicator.root.hidden = false;
       return;
@@ -47,9 +44,7 @@ function createMainView(props) {
 
     loadingIndicator.root.hidden = true;
 
-    if (state.error) {
-      // TODO: render error to the page
-      console.log(state.error);
+    if (state.error || !state.movies) {
       return;
     }
 

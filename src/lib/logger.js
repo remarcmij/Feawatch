@@ -22,7 +22,7 @@ function logger() {
     switch (level) {
       case 'silly':
       case 'debug':
-        logFn = console.debug;
+        logFn = console.log;
         break;
       case 'warn':
         logFn = console.warn;
@@ -75,4 +75,5 @@ function logger() {
   };
 }
 
-export default logger();
+const log = logger();
+export default log;

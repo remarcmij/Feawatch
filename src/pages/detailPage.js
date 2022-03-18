@@ -1,31 +1,28 @@
 import fetchMovieDetails from '../fetchers/fetchMovieDetails.js';
-import { navigateTo } from '../lib/hashRouter.js';
+import router from '../lib/router.js';
 import log from '../lib/logger.js';
 import createDetailView from '../views/detailView.js';
 
-function createDetailPage(state, imdbID) {
+function createDetailPage(imdbID) {
   const props = {
     onBackClick() {
-      navigateTo('home');
+      router.navigateTo('home');
     },
   };
   const detailView = createDetailView(props);
 
   const getData = async () => {
-    state.error = null;
-    state.loading = true;
-    detailView.update(state);
+    router.updateState({ error: null, loading: true, movie: null });
 
     try {
-      state.movie = await fetchMovieDetails(imdbID);
-    } catch (err) {
-      log.error('detailPage', err.message);
-      navigateTo('error');
+      const movie = await fetchMovieDetails(imdbID);
+      router.updateState({ movie, loading: false });
+    } catch (error) {
+      router.updateState({ error, loading: false });
+      log.error('detailPage', error.message);
+      router.navigateTo('error');
       return;
     }
-
-    state.loading = false;
-    detailView.update(state);
   };
 
   getData();

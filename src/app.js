@@ -1,16 +1,17 @@
-import createRouter from './lib/hashRouter.js';
+import router from './lib/router.js';
 import log from './lib/logger.js';
 import routes from './pages/routes.js';
 
 const initialState = {
   page: 1,
   movies: null,
+  movie: null,
   error: null,
   loading: false,
 };
 
 const loadApp = () => {
-  log.setLevel('silly');
+  log.setLevel('debug');
   log.info('application', 'started');
 
   const appRoot = document.getElementById('app-root');
@@ -18,8 +19,7 @@ const loadApp = () => {
   routerOutlet.id = 'router-outlet';
   appRoot.appendChild(routerOutlet);
 
-  const router = createRouter(routes, routerOutlet, { ...initialState });
-  router.start();
+  router.start(routes, routerOutlet, { ...initialState });
 };
 
 window.addEventListener('load', loadApp);
