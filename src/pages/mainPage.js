@@ -9,16 +9,18 @@ function createMainPage() {
 
     router.updateState({ error: null, loading: true });
 
+    let movies;
+
     try {
-      const movies = await fetchMovies(title, type, year, page);
-      router.updateState({ movies, loading: false });
+      movies = await fetchMovies(title, type, year, page);
     } catch (error) {
       router.updateState({ error, loading: false });
       log.error('detailPage', error.message);
       router.navigateTo('error');
-      // return;
-      throw error;
+      return;
     }
+
+    router.updateState({ movies, loading: false });
   };
 
   //

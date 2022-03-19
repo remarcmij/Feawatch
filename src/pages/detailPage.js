@@ -4,25 +4,23 @@ import log from '../lib/logger.js';
 import createDetailView from '../views/detailView.js';
 
 function createDetailPage(imdbID) {
-  const props = {
-    onBackClick() {
-      router.navigateTo('home');
-    },
-  };
-  const detailView = createDetailView(props);
+  const detailView = createDetailView();
 
   const getData = async () => {
     router.updateState({ error: null, loading: true, movie: null });
 
+    let movie;
+
     try {
-      const movie = await fetchMovieDetails(imdbID);
-      router.updateState({ movie, loading: false });
+      movie = await fetchMovieDetails(imdbID);
     } catch (error) {
       router.updateState({ error, loading: false });
       log.error('detailPage', error.message);
       router.navigateTo('error');
       return;
     }
+
+    router.updateState({ movie, loading: false });
   };
 
   getData();

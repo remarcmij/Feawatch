@@ -1,16 +1,13 @@
 import createLoadingIndicator from './loadingIndicator.js';
 
-function createDetailView(props) {
+function createDetailView() {
   const root = document.createElement('div');
   root.innerHTML = String.raw`
     <header>
-      <button type="button" id="btn-back">Back</button>
+      <a href="#home">Back</button>
     </header>
     <div id="card-detail-container"></div>
   `;
-
-  const btnBack = root.querySelector('#btn-back');
-  btnBack.addEventListener('click', props.onBackClick);
 
   const container = root.querySelector('#card-detail-container');
 
